@@ -1,15 +1,15 @@
 # intro to mcp
-[doc](https://modelcontextprotocol.io/introduction)
+[Refer to url](https://modelcontextprotocol.io/introduction)
 
 # mcp documentation
-[doc](https://pypi.org/project/mcp/)
+[Refer to url](https://pypi.org/project/mcp/)
 
 # python sdk for mcp
-[doc](https://github.com/modelcontextprotocol/python-sdk)
+[Refer to url](https://github.com/modelcontextprotocol/python-sdk)
 
 
 # uv for package manager
-[doc](https://docs.astral.sh/uv/)
+[Refer to url](https://docs.astral.sh/uv/)
 ```
 uv init # create a new project
 uv venv # create a virtual environment
