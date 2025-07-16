@@ -23,6 +23,3 @@ uv remove <library_name>
 uv update <library_name>
 uv pip list # list installed libraries
 ```
-
-# mcp server install
-uv run mcp install server.py
