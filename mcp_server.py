@@ -134,6 +134,7 @@ async def generate_and_run_sql_query(natural_language_query: str):
         - For queries involving strings, use UPPER() and LIKE '%...%' for case-insensitive matching.
         - For queries involving dates, use SQLite date functions for date comparisons.
         - AccountsNextDueDate is stored as text in 'YYYY-MM-DD' format.
+        - IncorporationDate is stored as text in 'DD/MM/YYYY' format.
         - Always handle NULL values with: AccountsNextDueDate IS NOT NULL AND AccountsNextDueDate != ''
         - To find records within a date range, use: 
           date(trim(AccountsNextDueDate)) BETWEEN date('now') AND date('now', '+1 month')

@@ -1,4 +1,5 @@
 
+
 import pandas as pd
 import sqlite3
 import os
@@ -43,7 +44,7 @@ def csv_to_sqlite(csv_path, table_name, chunksize=50000):
             chunk.to_sql(table_name, conn, if_exists=if_exists_param, index=False)
             first_chunk = False
         
-        print(f"\nSuccessfully loaded data into '{table_name}' table in {db_path}")
+        print(f"\nSuccessfully loaded data into '{table_name}' table in {DB_PATH}")
 
     except Exception as e:
         print(f"An error occurred: {e}")
@@ -117,12 +118,16 @@ def query_companies_table(sql: str, return_json: bool = True) -> Union[pd.DataFr
                 print(f"Error closing connection: {e}")
 
 
-def create_indexes():
+def create_indexes(db_path=None):
     """
     Creates indexes on the companies table to improve query performance.
+    
+    Args:
+        db_path (str, optional): Path to the SQLite database. Uses DB_PATH if not provided.
     """
-    print("Connecting to database to create indexes...")
-    conn = sqlite3.connect(DB_PATH)
+    db_to_use = db_path if db_path else DB_PATH
+    print(f"Connecting to database at {db_to_use} to create indexes...")
+    conn = sqlite3.connect(db_to_use)
     cursor = conn.cursor()
 
     indexes_to_create = {
@@ -177,7 +182,7 @@ if __name__ == "__main__":
             print("Error: --csv_path is required for the import action.")
         else:
             TABLE_NAME = 'companies'
-            import_success = csv_to_sqlite(args.csv_path, args.db_path, TABLE_NAME)
+            import_success = csv_to_sqlite(args.csv_path, TABLE_NAME)  # Removed db_path as it's a global
             if import_success:
                 create_indexes(args.db_path)
     
